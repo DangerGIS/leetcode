@@ -12,7 +12,7 @@ public class longestValidParentheses {
 			// 如果遇到左括号，则将当前下标压入栈
 			if (s.charAt(i) == '(')
 				stack.push(i);
-			else {// 如果遇到右括号，如果当前栈为空，则将下一个坐标位置记录到start，如果栈不为空，则将栈顶元素取出
+			else {// 如果遇到右括号，弹出最顶层的元素并从堆栈的顶部元素中减去当前元素的索引，这给出了当前遇到的有效括号字符串的长度
 				stack.pop();
 				if (stack.isEmpty())
 					stack.push(i);
