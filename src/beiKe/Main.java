@@ -1,4 +1,4 @@
-package leetcode.Q56;
+package beiKe;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,23 +9,17 @@ import java.util.Scanner;
 class Interval {
 	int start;
 	int end;
+	int i;
 
-	Interval() {
-		start = 0;
-		end = 0;
-	}
-
-	Interval(int s, int e) {
-		start = s;
-		end = e;
+	Interval(int i, int s, int e) {
+		this.start = s;
+		this.end = e;
+		this.i = i;
 	}
 }
 
-public class merge {
-
-	public static List<Interval> merge(List<Interval> intervals) {
-		if (intervals.size() <= 1 || intervals == null)
-			return intervals;
+public class Main {
+	public static int func(List<Interval> intervals) {
 		List<Interval> result = new ArrayList<>();
 		Collections.sort(intervals, new Comparator<Interval>() {// 先将区间排序
 			public int compare(Interval a, Interval b) {
@@ -43,25 +37,36 @@ public class merge {
 			}
 		}
 		result.add(temp);
-		return result;
+		if (result.size() == 1)
+			return intervals.size();
+		else
+			return 1;
+
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
 		List<Interval> input = new ArrayList<>();
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < n; i++) {
 			int x = sc.nextInt();
 			int y = sc.nextInt();
-			Interval temp = new Interval(x, y);
+			Interval temp = new Interval(i, x, x + y - 1);
 			input.add(temp);
+		}
+		Collections.sort(input, new Comparator<Interval>() {// 先将区间排序
+			public int compare(Interval a, Interval b) {
+				return a.start - b.start;
+			}
+		});
+		int[] output = new int[n];
+		for (int i = 0; i < n; i++) {
 
 		}
-		List<Interval> output = merge(input);
-		for (Interval i : output) {
-			System.out.println(i.start + " " + i.end);
+		for (int i = 0; i < n; i++) {
+			System.out.println(output[i] + " ");
 		}
-
 	}
 
 }
