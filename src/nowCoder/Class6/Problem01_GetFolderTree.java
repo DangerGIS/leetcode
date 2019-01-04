@@ -13,7 +13,7 @@ public class Problem01_GetFolderTree {
 		}
 	}
 
-	public static Node generateFolderTree(String[] folderPaths) {
+	public static Node generateFolderTree1(String[] folderPaths) {
 		Node head = new Node("");
 		for (String folderPath : folderPaths) {
 			String[] paths = folderPath.split("\\\\");
@@ -29,20 +29,22 @@ public class Problem01_GetFolderTree {
 		return head;
 	}
 
-	// public static Node generateFolderTree(String[] folderPaths) {
-	// Node head = new Node("");
-	// for (String foldPath : folderPaths) {
-	// String[] paths = foldPath.split("\\\\");
-	// Node cur = head;
-	// for (int i = 0; i < paths.length; i++) {
-	// if (!cur.nextMap.containsKey(paths[i])) {
-	// cur.nextMap.put(paths[i], new Node(paths[i]));
-	// }
-	// cur = cur.nextMap.get(paths[i]);
-	// }
-	// }
-	// return head;
-	// }
+	// ¹¹½¨Ê÷
+	public static Node generateFolderTree(String[] folderPaths) {
+		Node head = new Node("");
+		for (String folderPath : folderPaths) {
+			String[] paths = folderPath.split("\\\\");
+			Node cur = head;
+			for (int i = 0; i < paths.length; i++) {
+				if (!cur.nextMap.containsKey(paths[i])) {
+					cur.nextMap.put(paths[i], new Node(paths[i]));
+				}
+				cur = cur.nextMap.get(paths[i]);
+			}
+		}
+		return head;
+	}
+
 	public static void print(String[] folderPaths) {
 		if (folderPaths == null || folderPaths.length == 0) {
 			return;

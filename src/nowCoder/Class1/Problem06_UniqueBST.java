@@ -21,7 +21,7 @@ public class Problem06_UniqueBST {
 			return 2;
 		}
 		int res = 0;
-		for (int leftNum = 0; leftNum < n - 1; leftNum++) {
+		for (int leftNum = 0; leftNum <= n - 1; leftNum++) {
 			int leftWays = process(leftNum);
 			int rightWays = process(n - 1 - leftNum);
 			res += leftWays * rightWays;
